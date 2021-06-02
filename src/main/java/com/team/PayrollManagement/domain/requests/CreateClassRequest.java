@@ -1,59 +1,27 @@
-package com.team.PayrollManagement.domain;
+package com.team.PayrollManagement.domain.requests;
 
-
-import com.team.PayrollManagement.domain.requests.CreateClassRequest;
-
-import javax.persistence.*;
+import javax.persistence.Column;
 import java.math.BigDecimal;
 
-@Entity(name = "class")
-public class EmployeeClass {
+public class CreateClassRequest {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "name")
     private String name;
-    @Column(name = "basicPay")
     private BigDecimal basicPay;
-    @Column(name = "salary")
     private BigDecimal salary;
-    @Column(name = "travelAllowance")
     private BigDecimal travelAllowance;
-    @Column(name = "medicalAllowance")
     private BigDecimal medicalAllowance;
-    @Column(name = "washingAllowance")
     private BigDecimal washingAllowance;
 
-    private EmployeeClass(String name, BigDecimal basicPay, BigDecimal salary,
-                         BigDecimal travelAllowance, BigDecimal medicalAllowance,
-                         BigDecimal washingAllowance) {
+
+    public CreateClassRequest(String name, BigDecimal basicPay, BigDecimal salary,
+                              BigDecimal travelAllowance, BigDecimal medicalAllowance,
+                              BigDecimal washingAllowance) {
         this.name = name;
         this.basicPay = basicPay;
         this.salary = salary;
         this.travelAllowance = travelAllowance;
         this.medicalAllowance = medicalAllowance;
         this.washingAllowance = washingAllowance;
-    }
-
-    public static EmployeeClass createEmployeeClass(CreateClassRequest createClassRequest){
-        return new EmployeeClass(
-                createClassRequest.getName(),
-                createClassRequest.getBasicPay(),
-                createClassRequest.getSalary(),
-                createClassRequest.getTravelAllowance(),
-                createClassRequest.getMedicalAllowance(),
-                createClassRequest.getWashingAllowance()
-        );
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -106,9 +74,8 @@ public class EmployeeClass {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("EmployeeClass{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
+        final StringBuilder sb = new StringBuilder("CreateClassRequest{");
+        sb.append("name='").append(name).append('\'');
         sb.append(", basicPay=").append(basicPay);
         sb.append(", salary=").append(salary);
         sb.append(", travelAllowance=").append(travelAllowance);
