@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity(name = "class")
-public class EmployeeClass {
+public class WorkClass {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +26,11 @@ public class EmployeeClass {
     @Column(name = "washingAllowance")
     private BigDecimal washingAllowance;
 
-    private EmployeeClass(String name, BigDecimal basicPay, BigDecimal salary,
-                         BigDecimal travelAllowance, BigDecimal medicalAllowance,
-                         BigDecimal washingAllowance) {
+    public WorkClass(){}
+
+    private WorkClass(String name, BigDecimal basicPay, BigDecimal salary,
+                      BigDecimal travelAllowance, BigDecimal medicalAllowance,
+                      BigDecimal washingAllowance) {
         this.name = name;
         this.basicPay = basicPay;
         this.salary = salary;
@@ -37,8 +39,8 @@ public class EmployeeClass {
         this.washingAllowance = washingAllowance;
     }
 
-    public static EmployeeClass createEmployeeClass(CreateClassRequest createClassRequest){
-        return new EmployeeClass(
+    public static WorkClass createEmployeeClass(CreateClassRequest createClassRequest){
+        return new WorkClass(
                 createClassRequest.getName(),
                 createClassRequest.getBasicPay(),
                 createClassRequest.getSalary(),
